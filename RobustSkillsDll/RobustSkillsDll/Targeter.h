@@ -3,13 +3,27 @@
  * Author: Will Nations
  * Date Created: 04/03/2016
  * Description:
- *     Specifies classes responsible for acquiring targets.
+ *     Specifies classes responsible for acquiring pointers to Targetables.
  */
 
 #include "Targetable.h"
 
 namespace robustskills {
 
+    class TargetStorage {
+        // Get the next target
+        virtual Targetable* nextTarget() = 0;
+
+        // Get the previous target
+        virtual Targetable* previousTarget() = 0;
+
+        // Checks whether a particular Targetable object can be targeted
+        virtual bool canTarget(Targetable* target) = 0;
+    };
+
+    /*
+     * Classes that have the power to gather collections of Targetables.
+     */
     class TargetAcquirer {
 
     public:
@@ -17,6 +31,9 @@ namespace robustskills {
 
         // Acquire a fresh set of targets. Assumed to reset next/previous
         virtual void updateTargets() = 0;
+
+        // Returns a storage mechanism for processing the Targetables
+        virtual TargetStorage* getTargetStorage() = 0;
     };
 
 
@@ -67,10 +84,10 @@ namespace robustskills {
         // updates the targets of all TargetAcquirers
         virtual void updateTargets() = 0;
 
-        // Get the next target
+        // Get the next target from aggregate Targetable collection
         virtual Targetable* nextTarget() = 0;
 
-        // Get the previous target
+        // Get the previous target from aggregate Targetable collection
         virtual Targetable* previousTarget() = 0;
 
         // Checks whether a particular Targetable object can be targeted

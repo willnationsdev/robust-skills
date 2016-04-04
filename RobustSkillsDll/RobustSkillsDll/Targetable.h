@@ -1,6 +1,11 @@
+/*
+ * Author: Will Nations
+ * Date Created: 04/03/2016
+ * Description:
+ *     An interface for specifying a given object as a viable target for the
+ *     sister interface Targeter.
+ */
 #pragma once
-
-#include <assert.h>
 
 namespace robustskills {
 
@@ -51,11 +56,11 @@ namespace robustskills {
         // A "master lock" on whether it can be targeted
         virtual bool isTargetable() = 0;
 
-        // Location of the Target
-        virtual const vec2<int>& getLocation2D() = 0;
-        virtual const vec2<float>& getLocation2Df() = 0;
-        virtual const vec3<int>& getLocation3D() = 0;
-        virtual const vec3<float>& getLocation3Df() = 0;
+        // Location of the Target. Selectively override as needed
+        virtual const vec2<int>& getLocation2D() {};
+        virtual const vec2<float>& getLocation2Df() {};
+        virtual const vec3<int>& getLocation3D() {};
+        virtual const vec3<float>& getLocation3Df() {};
 
         // Information about the Target
         virtual const TargetData* getData() = 0;
