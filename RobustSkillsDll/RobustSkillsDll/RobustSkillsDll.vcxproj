@@ -146,13 +146,17 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="Skill.h" />
+    <ClInclude Include="SkillInterface.h" />
     <ClInclude Include="SkillUser.h" />
+    <ClInclude Include="Taggable.h" />
     <ClInclude Include="Targetable.h" />
     <ClInclude Include="TargetChannel.h" />
     <ClInclude Include="Targeter.h" />
     <ClInclude Include="TargetingInterfaces.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Skill.cpp" />
     <ClCompile Include="SkillUser.cpp" />
     <ClCompile Include="TargetChannel.cpp" />
   </ItemGroup>

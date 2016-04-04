@@ -5,6 +5,7 @@
  *    Implementation of TargetChannel-related class methods
  */
 #include "TargetChannel.h"
+#include <assert.h>
 
 namespace robustskills {
 
@@ -45,11 +46,17 @@ namespace robustskills {
 
         // Require that we are given a valid reference
         assert(otherPermissions != nullptr);
+
+        // Cycle through each TargetChannel we have
         for (int i = 0; i < getNumChannels(); ++i) {
+
+            // Get the current channel's name
             TargetChannel::TargetChannelName name =
                 getChannels()[i].getName();
 
+            // Check whether the other permissions have a match
             bool didFind = findChannel(otherPermissions, name);
+
             if (didFind) {
                 // If you did find it, and just need one, return success
                 if (exclusivity == TPE::ANY) {

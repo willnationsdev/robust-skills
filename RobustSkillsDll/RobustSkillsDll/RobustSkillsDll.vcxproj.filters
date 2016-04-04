@@ -16,30 +16,57 @@
     <Filter Include="Header Collections">
       <UniqueIdentifier>{07b2232a-5038-4cba-9e95-8dec932dc969}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\Targeting">
+      <UniqueIdentifier>{e9b1da6e-1bc9-46b5-9a08-119d1467932f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Targeting">
+      <UniqueIdentifier>{baa12bc6-f83f-4061-8f30-b7fce951fcba}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Skills">
+      <UniqueIdentifier>{b0f96d01-cbe7-4db0-9beb-fc4cf208f647}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Skills">
+      <UniqueIdentifier>{c1c51722-82c9-4667-bb6c-a8043d46679a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Tagging">
+      <UniqueIdentifier>{139479b0-e230-4cbd-b5e1-cafbcbee511c}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="SkillUser.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Targeter.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="TargetChannel.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Targetable.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="TargetingInterfaces.h">
       <Filter>Header Collections</Filter>
     </ClInclude>
+    <ClInclude Include="Targetable.h">
+      <Filter>Header Files\Targeting</Filter>
+    </ClInclude>
+    <ClInclude Include="TargetChannel.h">
+      <Filter>Header Files\Targeting</Filter>
+    </ClInclude>
+    <ClInclude Include="Targeter.h">
+      <Filter>Header Files\Targeting</Filter>
+    </ClInclude>
+    <ClInclude Include="SkillInterface.h">
+      <Filter>Header Files\Skills</Filter>
+    </ClInclude>
+    <ClInclude Include="SkillUser.h">
+      <Filter>Header Files\Skills</Filter>
+    </ClInclude>
+    <ClInclude Include="Taggable.h">
+      <Filter>Header Files\Tagging</Filter>
+    </ClInclude>
+    <ClInclude Include="Skill.h">
+      <Filter>Header Files\Skills</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="SkillUser.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="TargetChannel.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Source Files\Targeting</Filter>
+    </ClCompile>
+    <ClCompile Include="SkillUser.cpp">
+      <Filter>Source Files\Skills</Filter>
+    </ClCompile>
+    <ClCompile Include="Skill.cpp">
+      <Filter>Source Files\Skills</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
