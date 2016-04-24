@@ -8,7 +8,7 @@
 #pragma once
 
 namespace robustskills {
-    namespace interfaces {
+    namespace targeting {
 
         class TargetData;
 
@@ -87,8 +87,11 @@ namespace robustskills {
                 const = 0;
         };
 
+        /*
+         * Provides information about the target, including targeting 
+         * permissions
+         */
         class TargetData {
-
         public:
             virtual ~TargetData() = 0;
 

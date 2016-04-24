@@ -58,8 +58,34 @@
  */
 #pragma once
 
+#include "SkillUser.h"
+
 namespace robustskills {
     namespace interfaces {
+
+        template <typename EffectAttributes, typename Effectable>
+        class Effect {
+        public:
+            Effect() {};
+            virtual ~Effect() = 0;
+
+            virtual SkillUser* getSourceSkillUser() = 0;
+            virtual SkillUser* getTargetSkillUser() = 0;
+            virtual void setSourceSkillUser(SkillUser* skillUser) = 0;
+            virtual void setTargetSkillUser(SkillUser* skillUser) = 0;
+
+            virtual EffectAttributes* getEffectAttributes() = 0;
+
+            // Changes the Effectable based on the Effect
+            virtual Effectable* apply(Effectable* effectable) = 0;
+            // Reverses all changes caused by the Effect
+            virtual Effectable* revert(Effectable* effectable) = 0;
+            // Returns a copy of the Effectable with the Effect applied
+            virtual Effectable* simulate(Effectable* effectable) = 0;
+            // Returns a copy of the Effectable with the Effect reversed
+            virtual Effectable* desimulate(Effectable* effectable) = 0;
+        };
+
         class SkillInterface
         {
         public:

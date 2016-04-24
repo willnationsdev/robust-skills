@@ -9,7 +9,10 @@
 
 namespace robustskills {
 
-    class Skill : interfaces::SkillInterface {
+    template <typename SkillType>
+    class Skill : {
 
     };
+
+
 }

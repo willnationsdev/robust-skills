@@ -1,13 +1,18 @@
 #pragma once
 
-class Taggable {
-public:
-    Taggable() {};
-    virtual ~Taggable() = 0;
+namespace robustskills {
+    namespace core {
 
-    typedef char* Tag;
+        class Taggable {
+        public:
+            Taggable() {};
+            virtual ~Taggable() = 0;
 
-    virtual void addTag(const Tag) = 0;
-    virtual void removeTag(const Tag) = 0;
-    virtual void hasTag(const Tag) = 0;
-};
+            typedef const char* Tag;
+
+            virtual void addTag(Tag&&) = 0;
+            virtual void removeTag(Tag&&) = 0;
+            virtual void hasTag(Tag&&) = 0;
+        };
+    }
+}

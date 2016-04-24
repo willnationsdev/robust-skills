@@ -23,20 +23,29 @@
 #pragma once
 
 #include "SkillInterface.h"
+#define SKILLUSERPARTS typename SkillStorage, typename EffectStorage, typename SkillUserStats, typename LocationData
 
 namespace robustskills {
 
-    namespace interfaces {
-
+    namespace core {
+        /*
+         * Responsible for managing memory storage associated with the Skills
+         * mapped to a given Skill.
+         */
+        template <typename Skill>
         class SkillStorage {
         public:
-            virtual bool addSkill(const SkillInterface*) = 0;
-            virtual bool removeSkill(const SkillInterface*) = 0;
-            virtual bool equipSkill(const SkillInterface*) = 0;
-            virtual bool unequipSkill(const SkillInterface*) = 0;
+            virtual bool addSkill(const Skill*);
+            virtual bool removeSkill(const Skill*);
+            virtual bool equipSkill(const Skill*);
+            virtual bool unequipSkill(const Skill*);
         private:
         };
 
+        /*
+         * Responsible for providing services regarding persistent effects on
+         * the SkillUser.
+         */
         class EffectStorage {
         public:
 
@@ -56,27 +65,28 @@ namespace robustskills {
         private:
         };
 
+        template <SKILLUSERPARTS>
         class SkillUser {
-
         public:
-            SkillUser() {};
-            virtual ~SkillUser() = 0;
+            SkillUser();
+            ~SkillUser();
 
-            virtual SkillStorage* getSkillStorage() = 0;
-            virtual void setSkillStorage(const SkillStorage* skillStorage) = 0;
+            SkillStorage* getSkillStorage();
+            void setSkillStorage(const SkillStorage* skillStorage);
 
-            virtual EffectStorage* getEffectStorage() = 0;
-            virtual void setEffectStorage(const EffectStorage* 
-                effectStorage) = 0;
+            EffectStorage* getEffectStorage();
+            void setEffectStorage(const EffectStorage*
+                effectStorage);
 
-            virtual SkillUserStats* getSkillUserStats() = 0;
-            virtual void setSkillUserStats(const SkillUserStats*
-                skillUserData) = 0;
+            SkillUserStats* getSkillUserStats();
+            void setSkillUserStats(const SkillUserStats*
+                skillUserData);
 
-            virtual LocationData* getLocationData() = 0;
-            virtual void setLocationData(const LocationData* locationData) = 0;
+            LocationData* getLocationData();
+            void setLocationData(const LocationData* locationData);
+
+        private:
+            SkillStorage
         };
-
     }
-
 }

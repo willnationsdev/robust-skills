@@ -11,52 +11,54 @@
 #pragma once
 
 #include "Targetable.h"
+#include "Taggable.h"
 
 namespace robustskills {
 
-    /*
-     * Describes the attribute of a given "channel" state.
-     */
-    class TargetChannel {
+    namespace targeting {
+        /*
+         * Describes the attribute of a given "channel" state.
+         */
+        class TargetChannel : public core::Taggable {
 
-    public:
-        typedef char* TargetChannelName;
+        public:
 
-        const TargetChannelName getName() const { return name; }
-        void setName(const TargetChannelName n = "") { name = n; }
+            Tag getName() const { return name; }
+            void setName(Tag&& t = "") { name = t; }
 
-        // Channels would then be specified in the following manner
-        //static TargetChannelName Hackable;
+            // Channels would then be specified in the following manner
+            //static TargetChannelName Hackable;
 
-    private:
-        TargetChannelName name;
-    };
+        private:
+            Tag name;
+        };
 
-    class TargetChannelPermissions : TargetPermissions {
-    public:
+        class TargetChannelPermissions : TargetPermissions {
+        public:
 
-        enum class TargetPermissionsExclusivity : bool { ANY, ALL };
-        using TPE = TargetPermissionsExclusivity;
+            enum class TargetPermissionsExclusivity : bool { ANY, ALL };
+            using TPE = TargetPermissionsExclusivity;
 
-        const TargetChannel* getChannels() const { return channels; }
-        const int getNumChannels() const { return numChannels; }
+            const TargetChannel* getChannels() const { return channels; }
+            const int getNumChannels() const { return numChannels; }
 
-        virtual bool canTarget(const TargetPermissions* otherPermissions) const override;
+            virtual bool canTarget(const TargetPermissions* otherPermissions) const override;
 
-        virtual bool canTarget(
-            const TargetChannelPermissions* otherPermissions = nullptr);
+            virtual bool canTarget(
+                const TargetChannelPermissions* otherPermissions = nullptr);
 
-        virtual bool canTarget(
-            const TargetChannelPermissions* otherPermissions = nullptr,
-            const TPE exclusivity = TPE::ALL);
+            virtual bool canTarget(
+                const TargetChannelPermissions* otherPermissions = nullptr,
+                const TPE exclusivity = TPE::ALL);
 
-    private:
-        // To be overridden for better efficiency if desired
-        virtual bool findChannel(const TargetChannelPermissions* permissions,
-            const TargetChannel::TargetChannelName name) const;
+        private:
+            // To be overridden for better efficiency if desired
+            virtual bool findChannel(const TargetChannelPermissions* permissions,
+                const TargetChannel::TargetChannelName name) const;
 
-        TargetChannel* channels;
-        int numChannels;
-        TPE nativeExclusivity;
-    };
+            TargetChannel* channels;
+            int numChannels;
+            TPE nativeExclusivity;
+        };
+    }
 }
